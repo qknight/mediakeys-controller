@@ -1,0 +1,26 @@
+what is this?
+=================
+this software parses the /dev/input/eventX devices in order to capture certain events:
+ - volume up
+ - volume down
+ - volume mute/unmute
+
+i've adapted the source from [1].
+
+how to use
+=================
+ 1. type make
+ 2. use as root: ./input_parser /dev/input/event3
+ 3. you can use other events as /dev/input/event2 instead, just look whats there in /var/log/Xorg.0.log
+ 4. finally use the daemon script which will parse the events and issue scripts on occurance
+    ./mediakeys-controller
+
+how it SHOULD work:
+ - open all /dev/input/events it can find, only use keyboards
+ - hal monitoring of devices
+ - if new devices are added they are also added
+ - if devices are removed from the system, they are also removed
+
+links
+=================
+ [1] http://stackoverflow.com/questions/2547616/how-can-i-translate-linux-keycodes-from-dev-input-event-to-ascii-in-perl
